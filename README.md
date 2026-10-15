@@ -1,10 +1,13 @@
 # CreditLens AI — Credit Card Default Prediction Platform 💳⚡
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://creditlens-ai-dbku.onrender.com)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![UCI ML Repo](https://img.shields.io/badge/Dataset-UCI%20%23350-brightgreen)](https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+👉 **Live Application:** **[https://creditlens-ai-dbku.onrender.com](https://creditlens-ai-dbku.onrender.com)**
 
 An end-to-end Machine Learning web application predicting credit card default probability in real-time. Built with a 3-layer **Artificial Neural Network (ANN)** in TensorFlow/Keras, served via high-performance **FastAPI**, and packaged with a modern, consumer-grade fintech UI inspired by Dribbble design standards.
 

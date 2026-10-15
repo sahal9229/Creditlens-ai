@@ -9,6 +9,13 @@ Run:  uvicorn main:app --reload --port 8000
 import os
 import subprocess
 import sys
+import warnings
+
+# Suppress CUDA check errors on CPU-only cloud instances (Render)
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+warnings.filterwarnings("ignore")
 
 import joblib
 import numpy as np
@@ -146,6 +153,6 @@ async def predict(features: CreditFeatures):
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 async def serve_frontend():
     return FileResponse(os.path.join(STATIC_DIR, "index.html"))
