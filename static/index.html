@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Credit Default Risk AI — Intelligent live credit card default assessment powered by Artificial Neural Networks (ANN). Built by Muhammed Sahal KK.">
+    <title>CreditLens AI — Credit Card Default Prediction Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="theme-light">
+
+    <!-- ── Ambient Glow Background Elements ──────────────────────────── -->
+    <div class="ambient-glow ambient-glow--1" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--2" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--3" aria-hidden="true"></div>
+
+    <!-- ── Navigation Bar ────────────────────────────────────────────── -->
+    <nav class="navbar" id="top-nav">
+        <div class="nav-container">
+            <a href="#" class="brand-link" id="brand-home">
+                <div class="brand-icon-wrapper">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="3"/>
+                        <line x1="2" y1="10" x2="22" y2="10"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">CreditLens<span class="brand-highlight">AI</span></span>
+                    <span class="brand-tag">Neural Risk Assessment</span>
+                </div>
+            </a>
+
+            <div class="nav-links">
+                <a href="#how-it-works" class="nav-item">How It Works</a>
+                <a href="#simulator" class="nav-item">Live Simulator</a>
+                <a href="#about-creator" class="nav-item nav-item--featured">Meet Creator</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="connection-pill" id="api-status">
+                    <span class="status-pulse status-pulse--offline"></span>
+                    <span class="status-text">Connecting...</span>
+                </div>
+                <a href="https://github.com/sahal9229" target="_blank" rel="noopener noreferrer" class="nav-social-btn" title="View Muhammed Sahal on GitHub">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/muhammed-sahal-k-k/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="nav-social-btn nav-social-btn--in" title="Connect on LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Hero Section ──────────────────────────────────────────────── -->
+    <header class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-sparkle">✨</span>
+                    <span>Deep Learning Portfolio Project · UCI Dataset #350</span>
+                </div>
+                <h1 class="hero-title">
+                    Predict Credit Default with <span class="gradient-text">Neural Intelligence</span>
+                </h1>
+                <p class="hero-description">
+                    Welcome to <strong>CreditLens AI</strong>. Traditional credit scores only glance at historical balances. 
+                    Our 3-layer <strong>Artificial Neural Network (ANN)</strong> analyzes <strong>23 multi-dimensional indicators</strong>—including 
+                    6 months of repayment timeliness, revolving balances, and socioeconomic features—to assess default risk in real-time.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#simulator" class="btn-primary" id="hero-try-btn">
+                        <span>Launch Live Risk Simulator</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#how-it-works" class="btn-secondary" id="hero-guide-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                        </svg>
+                        <span>How To Use & Guide</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">30,000</span>
+                        <span class="stat-label">Client Records Trained</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">~81%</span>
+                        <span class="stat-label">Model Test Accuracy</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">&lt; 15ms</span>
+                        <span class="stat-label">FastAPI Inference Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-card-wrap">
+                    <img src="/static/images/hero_banner.jpg" alt="AI Credit Risk Assessment Visual" class="hero-img">
+                    <div class="visual-glass-overlay">
+                        <div class="overlay-tag">
+                            <span class="dot-green"></span>
+                            Live ANN Inference Ready
+                        </div>
+                        <div class="overlay-info">
+                            <span>23 Features Evaluated</span>
+                            <strong>StandardScaler + Keras Sequential</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Quick Guide: What To Do & How It Works ─────────────────────── -->
+    <section class="guide-section" id="how-it-works">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-kicker">Interactive Walkthrough</span>
+                <h2 class="section-main-title">How To Use This System</h2>
+                <p class="section-subtitle">Follow these 3 simple steps to simulate client creditworthiness and explore neural predictions.</p>
+            </div>
+
+            <div class="guide-grid">
+                <!-- Step 1 -->
+                <div class="guide-card">
+                    <div class="step-number">01</div>
+                    <div class="guide-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3 class="guide-card-title">Choose or Tune a Profile</h3>
+                    <p class="guide-card-text">
+                        Click one of the <strong>Scenario Presets</strong> (Low-Risk, Borderline, or Delinquent) below, 
+                        or use the interactive sliders and dropdowns to build a custom customer profile.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="guide-card">
+                    <div class="step-number">02</div>
+                    <div class="guide-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h3 class="guide-card-title">Inspect Financial Behaviour</h3>
+                    <p class="guide-card-text">
+                        Adjust repayment timeliness from April to September (`PAY_0` to `PAY_6`). 
+                        Values above 0 indicate months of payment delay, heavily influencing default probability.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="guide-card">
+                    <div class="step-number">03</div>
+                    <div class="guide-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="guide-card-title">Get Live Risk Diagnosis</h3>
+                    <p class="guide-card-text">
+                        The neural network evaluates inputs in real-time (250ms debounce). 
+                        View the <strong>Risk Meter Gauge</strong>, probability percentage, and classification decision instantly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Interactive Simulator Workspace ───────────────────────────── -->
+    <section class="simulator-section" id="simulator">
+        <div class="container">
+
+            <div class="section-title-wrap">
+                <span class="section-kicker">Live Machine Learning Playground</span>
+                <h2 class="section-main-title">Credit Risk Simulator</h2>
+                <p class="section-subtitle">Real-time inference running on FastAPI and TensorFlow ANN.</p>
+            </div>
+
+            <!-- Scenario Persona Selector (Beautiful Cards) -->
+            <div class="persona-section">
+                <div class="persona-header">
+                    <span class="persona-title-label">⚡ Quick Presets — Click to Load a Persona:</span>
+                </div>
+                <div class="persona-cards-grid">
+                    <!-- Low Risk -->
+                    <div class="persona-card persona-card--low" data-preset="low" id="preset-card-low" role="button" tabindex="0">
+                        <div class="persona-top">
+                            <div class="persona-avatar persona-avatar--low">SC</div>
+                            <div class="persona-meta">
+                                <h4 class="persona-name">Sarah Chen</h4>
+                                <span class="persona-badge persona-badge--low">Safe Profile</span>
+                            </div>
+                        </div>
+                        <p class="persona-desc">Graduate software engineer with NT$ 500k limit. Pays bills in full every month without delays.</p>
+                        <div class="persona-foot">
+                            <span class="persona-stat">Expected: &lt; 15% Risk</span>
+                            <span class="persona-action-btn">Apply Profile →</span>
+                        </div>
+                    </div>
+
+                    <!-- Borderline -->
+                    <div class="persona-card persona-card--mid" data-preset="mid" id="preset-card-mid" role="button" tabindex="0">
+                        <div class="persona-top">
+                            <div class="persona-avatar persona-avatar--mid">AR</div>
+                            <div class="persona-meta">
+                                <h4 class="persona-name">Alex Rivera</h4>
+                                <span class="persona-badge persona-badge--mid">Revolving Credit</span>
+                            </div>
+                        </div>
+                        <p class="persona-desc">University graduate with NT$ 120k limit. Uses revolving credit and pays small minimum sums.</p>
+                        <div class="persona-foot">
+                            <span class="persona-stat">Expected: ~25-45% Risk</span>
+                            <span class="persona-action-btn">Apply Profile →</span>
+                        </div>
+                    </div>
+
+                    <!-- High Risk -->
+                    <div class="persona-card persona-card--high active" data-preset="high" id="preset-card-high" role="button" tabindex="0">
+                        <div class="persona-top">
+                            <div class="persona-avatar persona-avatar--high">DM</div>
+                            <div class="persona-meta">
+                                <h4 class="persona-name">David Miller</h4>
+                                <span class="persona-badge persona-badge--high">Delinquent Risk</span>
+                            </div>
+                        </div>
+                        <p class="persona-desc">Low NT$ 20k credit limit, multiple consecutive payment delays (2+ months) with zero payments made.</p>
+                        <div class="persona-foot">
+                            <span class="persona-stat">Expected: &gt; 70% Risk</span>
+                            <span class="persona-action-btn">Apply Profile →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Interactive Form + Output Panel Grid -->
+            <div class="simulator-layout">
+
+                <!-- ═══ LEFT FORM: Input Parameters ═══ -->
+                <div class="form-wrapper">
+
+                    <!-- Section: Client Demographics & Credit Line -->
+                    <div class="glass-form-card">
+                        <div class="card-title-row">
+                            <div class="card-icon-pill">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title">1. Client Demographics & Credit Line</h3>
+                                <p class="card-hint">Baseline socioeconomic data and assigned credit ceiling</p>
+                            </div>
+                        </div>
+
+                        <!-- Credit Limit Slider + Mono Number Input -->
+                        <div class="control-group control-group--slider">
+                            <div class="slider-label-row">
+                                <label for="input-limit-bal" class="control-label">
+                                    Total Credit Limit (NT$)
+                                    <span class="label-badge">LIMIT_BAL</span>
+                                </label>
+                                <span class="slider-value-display" id="limit-bal-display">NT$ 20,000</span>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" id="slider-limit-bal" class="warm-range-slider" min="10000" max="800000" step="10000" value="20000">
+                                <input type="number" id="input-limit-bal" class="mono-num-input" value="20000" min="10000" max="800000" step="10000" data-feature="LIMIT_BAL">
+                            </div>
+                        </div>
+
+                        <!-- Age, Sex, Education, Marriage Grid -->
+                        <div class="form-row-grid">
+                            <div class="control-group">
+                                <label for="input-age" class="control-label">
+                                    Age (Years)
+                                    <span class="label-badge">AGE</span>
+                                </label>
+                                <input type="number" id="input-age" class="input-control" value="24" min="18" max="80" data-feature="AGE">
+                            </div>
+
+                            <div class="control-group">
+                                <label for="input-sex" class="control-label">
+                                    Sex
+                                    <span class="label-badge">SEX</span>
+                                </label>
+                                <select id="input-sex" class="select-control" data-feature="SEX">
+                                    <option value="1">1 — Male</option>
+                                    <option value="2" selected>2 — Female</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="input-education" class="control-label">
+                                    Education Level
+                                    <span class="label-badge">EDUCATION</span>
+                                </label>
+                                <select id="input-education" class="select-control" data-feature="EDUCATION">
+                                    <option value="1">1 — Graduate School</option>
+                                    <option value="2" selected>2 — University</option>
+                                    <option value="3">3 — High School</option>
+                                    <option value="4">4 — Others</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="input-marriage" class="control-label">
+                                    Marital Status
+                                    <span class="label-badge">MARRIAGE</span>
+                                </label>
+                                <select id="input-marriage" class="select-control" data-feature="MARRIAGE">
+                                    <option value="1" selected>1 — Married</option>
+                                    <option value="2">2 — Single</option>
+                                    <option value="3">3 — Others</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Repayment Status (6 Months) -->
+                    <div class="glass-form-card">
+                        <div class="card-title-row card-title-row--space">
+                            <div class="title-left">
+                                <div class="card-icon-pill">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 14 14"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="card-title">2. Monthly Repayment Timeliness</h3>
+                                    <p class="card-hint">Repayment track record: -1 = Paid on time, 0 = Revolving, 1–8 = Months delayed</p>
+                                </div>
+                            </div>
+                            <label class="toggle-pill-label" title="Synchronize all 6 months to the September value">
+                                <input type="checkbox" id="sync-months" class="toggle-checkbox">
+                                <span class="toggle-switch"></span>
+                                <span class="toggle-text">Sync All Months</span>
+                            </label>
+                        </div>
+
+                        <div class="repay-cards-grid">
+                            <!-- PAY_0 (Sep) -->
+                            <div class="repay-field-box">
+                                <span class="repay-month">Sep 2005</span>
+                                <span class="repay-code">PAY_0</span>
+                                <select id="input-pay0" class="select-control select-control--repay" data-feature="PAY_0" data-pay-field="true">
+                                    <option value="-2">-2 (No consumption)</option>
+                                    <option value="-1">-1 (Paid duly)</option>
+                                    <option value="0">0 (Revolving credit)</option>
+                                    <option value="1">1 (1 mo. delay)</option>
+                                    <option value="2" selected>2 (2 mos. delay)</option>
+                                    <option value="3">3 (3 mos. delay)</option>
+                                    <option value="4">4 (4 mos. delay)</option>
+                                    <option value="5">5 (5 mos. delay)</option>
+                                    <option value="6">6 (6 mos. delay)</option>
+                                    <option value="7">7 (7 mos. delay)</option>
+                                    <option value="8">8 (8 mos. delay)</option>
+                                </select>
+                            </div>
+
+                            <!-- PAY_2 (Aug) -->
+                            <div class="repay-field-box">
+                                <span class="repay-month">Aug 2005</span>
+                                <span class="repay-code">PAY_2</span>
+                                <select id="input-pay2" class="select-control select-control--repay" data-feature="PAY_2" data-pay-field="true">
+                                    <option value="-2">-2 (No consumption)</option>
+                                    <option value="-1">-1 (Paid duly)</option>
+                                    <option value="0">0 (Revolving credit)</option>
+                                    <option value="1">1 (1 mo. delay)</option>
+                                    <option value="2" selected>2 (2 mos. delay)</option>
+                                    <option value="3">3 (3 mos. delay)</option>
+                                    <option value="4">4 (4 mos. delay)</option>
+                                    <option value="5">5 (5 mos. delay)</option>
+                                    <option value="6">6 (6 mos. delay)</option>
+                                    <option value="7">7 (7 mos. delay)</option>
+                                    <option value="8">8 (8 mos. delay)</option>
+                                </select>
+                            </div>
+
+                            <!-- PAY_3 (Jul) -->
+                            <div class="repay-field-box">
+                                <span class="repay-month">Jul 2005</span>
+                                <span class="repay-code">PAY_3</span>
+                                <select id="input-pay3" class="select-control select-control--repay" data-feature="PAY_3" data-pay-field="true">
+                                    <option value="-2">-2 (No consumption)</option>
+                                    <option value="-1">-1 (Paid duly)</option>
+                                    <option value="0">0 (Revolving credit)</option>
+                                    <option value="1">1 (1 mo. delay)</option>
+                                    <option value="2" selected>2 (2 mos. delay)</option>
+                                    <option value="3">3 (3 mos. delay)</option>
+                                    <option value="4">4 (4 mos. delay)</option>
+                                    <option value="5">5 (5 mos. delay)</option>
+                                    <option value="6">6 (6 mos. delay)</option>
+                                    <option value="7">7 (7 mos. delay)</option>
+                                    <option value="8">8 (8 mos. delay)</option>
+                                </select>
+                            </div>
+
+                            <!-- PAY_4 (Jun) -->
+                            <div class="repay-field-box">
+                                <span class="repay-month">Jun 2005</span>
+                                <span class="repay-code">PAY_4</span>
+                                <select id="input-pay4" class="select-control select-control--repay" data-feature="PAY_4" data-pay-field="true">
+                                    <option value="-2">-2 (No consumption)</option>
+                                    <option value="-1">-1 (Paid duly)</option>
+                                    <option value="0">0 (Revolving credit)</option>
+                                    <option value="1">1 (1 mo. delay)</option>
+                                    <option value="2" selected>2 (2 mos. delay)</option>
+                                    <option value="3">3 (3 mos. delay)</option>
+                                    <option value="4">4 (4 mos. delay)</option>
+                                    <option value="5">5 (5 mos. delay)</option>
+                                    <option value="6">6 (6 mos. delay)</option>
+                                    <option value="7">7 (7 mos. delay)</option>
+                                    <option value="8">8 (8 mos. delay)</option>
+                                </select>
+                            </div>
+
+                            <!-- PAY_5 (May) -->
+                            <div class="repay-field-box">
+                                <span class="repay-month">May 2005</span>
+                                <span class="repay-code">PAY_5</span>
+                                <select id="input-pay5" class="select-control select-control--repay" data-feature="PAY_5" data-pay-field="true">
+                                    <option value="-2">-2 (No consumption)</option>
+                                    <option value="-1">-1 (Paid duly)</option>
+                                    <option value="0">0 (Revolving credit)</option>
+                                    <option value="1">1 (1 mo. delay)</option>
+                                    <option value="2" selected>2 (2 mos. delay)</option>
+                                    <option value="3">3 (3 mos. delay)</option>
+                                    <option value="4">4 (4 mos. delay)</option>
+                                    <option value="5">5 (5 mos. delay)</option>
+                                    <option value="6">6 (6 mos. delay)</option>
+                                    <option value="7">7 (7 mos. delay)</option>
+                                    <option value="8">8 (8 mos. delay)</option>
+                                </select>
+                            </div>
+
+                            <!-- PAY_6 (Apr) -->
+                            <div class="repay-field-box">
+                                <span class="repay-month">Apr 2005</span>
+                                <span class="repay-code">PAY_6</span>
+                                <select id="input-pay6" class="select-control select-control--repay" data-feature="PAY_6" data-pay-field="true">
+                                    <option value="-2">-2 (No consumption)</option>
+                                    <option value="-1">-1 (Paid duly)</option>
+                                    <option value="0">0 (Revolving credit)</option>
+                                    <option value="1">1 (1 mo. delay)</option>
+                                    <option value="2" selected>2 (2 mos. delay)</option>
+                                    <option value="3">3 (3 mos. delay)</option>
+                                    <option value="4">4 (4 mos. delay)</option>
+                                    <option value="5">5 (5 mos. delay)</option>
+                                    <option value="6">6 (6 mos. delay)</option>
+                                    <option value="7">7 (7 mos. delay)</option>
+                                    <option value="8">8 (8 mos. delay)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Bill Statements & Previous Payments -->
+                    <div class="glass-form-card">
+                        <div class="card-title-row">
+                            <div class="card-icon-pill">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="card-title">3. Monthly Statement Balances & Payments (NT$)</h3>
+                                <p class="card-hint">Historical monthly bill amount versus actual payment remitted</p>
+                            </div>
+                        </div>
+
+                        <div class="financial-table-wrapper">
+                            <table class="financial-table">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Bill Statement Amount</th>
+                                        <th>Previous Payment Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="month-cell"><span class="badge-month">Sep</span> BILL_AMT1 / PAY1</td>
+                                        <td>
+                                            <input type="number" id="input-bill1" class="table-num-input" value="19000" data-feature="BILL_AMT1">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="input-payamt1" class="table-num-input" value="0" data-feature="PAY_AMT1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="month-cell"><span class="badge-month">Aug</span> BILL_AMT2 / PAY2</td>
+                                        <td>
+                                            <input type="number" id="input-bill2" class="table-num-input" value="19500" data-feature="BILL_AMT2">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="input-payamt2" class="table-num-input" value="0" data-feature="PAY_AMT2">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="month-cell"><span class="badge-month">Jul</span> BILL_AMT3 / PAY3</td>
+                                        <td>
+                                            <input type="number" id="input-bill3" class="table-num-input" value="20000" data-feature="BILL_AMT3">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="input-payamt3" class="table-num-input" value="0" data-feature="PAY_AMT3">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="month-cell"><span class="badge-month">Jun</span> BILL_AMT4 / PAY4</td>
+                                        <td>
+                                            <input type="number" id="input-bill4" class="table-num-input" value="19000" data-feature="BILL_AMT4">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="input-payamt4" class="table-num-input" value="0" data-feature="PAY_AMT4">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="month-cell"><span class="badge-month">May</span> BILL_AMT5 / PAY5</td>
+                                        <td>
+                                            <input type="number" id="input-bill5" class="table-num-input" value="18500" data-feature="BILL_AMT5">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="input-payamt5" class="table-num-input" value="0" data-feature="PAY_AMT5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="month-cell"><span class="badge-month">Apr</span> BILL_AMT6 / PAY6</td>
+                                        <td>
+                                            <input type="number" id="input-bill6" class="table-num-input" value="18000" data-feature="BILL_AMT6">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="input-payamt6" class="table-num-input" value="0" data-feature="PAY_AMT6">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div class="form-actions-row">
+                        <button class="btn-primary btn-primary--wide" id="run-btn">
+                            <span class="btn-icon">⚡</span>
+                            <span class="btn-text">Run Neural Risk Assessment</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- ═══ RIGHT OUTPUT: Sticky Live Risk Card ═══ -->
+                <aside class="output-wrapper">
+                    <div class="sticky-output-card">
+
+                        <!-- Top Diagnostic Header -->
+                        <div class="result-header">
+                            <div class="result-title-group">
+                                <span class="result-kicker">Live Prediction Output</span>
+                                <h3 class="result-title">Default Risk Analysis</h3>
+                            </div>
+                            <div class="result-badge-container">
+                                <span class="decision-badge decision-badge--danger" id="output-badge">HIGH RISK</span>
+                            </div>
+                        </div>
+
+                        <!-- Circular/Semi-Circular SVG Radial Gauge -->
+                        <div class="radial-gauge-wrap">
+                            <svg class="radial-gauge-svg" viewBox="0 0 200 120">
+                                <!-- Background Arc -->
+                                <path class="gauge-arc-bg" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#EFE4DC" stroke-width="16" stroke-linecap="round"/>
+                                <!-- Active Dynamic Color Arc -->
+                                <path class="gauge-arc-fill" id="gauge-arc-fill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gauge-gradient)" stroke-width="16" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="60"/>
+                                
+                                <defs>
+                                    <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#10B981"/>
+                                        <stop offset="50%" stop-color="#F59E0B"/>
+                                        <stop offset="100%" stop-color="#EF4444"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+
+                            <!-- Center Value -->
+                            <div class="gauge-center-content">
+                                <span class="gauge-probability-num" id="output-prob-value">75.78%</span>
+                                <span class="gauge-sub-label">Default Likelihood</span>
+                            </div>
+
+                            <div class="gauge-scale-ticks">
+                                <span>0% Safe</span>
+                                <span>50% Threshold</span>
+                                <span>100% Critical</span>
+                            </div>
+                        </div>
+
+                        <!-- Status Diagnosis Banner -->
+                        <div class="diagnosis-banner" id="output-status-card">
+                            <div class="diagnosis-icon" id="status-icon">⚠️</div>
+                            <div class="diagnosis-text-group">
+                                <strong class="diagnosis-title" id="output-status">High Risk (Default Likely)</strong>
+                                <span class="diagnosis-sub" id="output-prob-pct">Raw Sigmoid Activation: 0.757823</span>
+                            </div>
+                        </div>
+
+                        <!-- Deep Learning Diagnostic Breakdown -->
+                        <div class="deep-metrics-card">
+                            <h4 class="metrics-title">Risk Factor Diagnostics</h4>
+                            <div class="metric-row">
+                                <span class="metric-name">Repayment Delinquency</span>
+                                <span class="metric-val metric-val--bad" id="diag-repay">2+ Months Overdue</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-name">Credit Utilization</span>
+                                <span class="metric-val metric-val--warning" id="diag-util">95.0% of Limit</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-name">Model Decision Boundary</span>
+                                <span class="metric-val">Sigmoid &ge; 0.50</span>
+                            </div>
+                        </div>
+
+                        <!-- Neural Architecture Summary -->
+                        <div class="neural-specs-card">
+                            <div class="neural-specs-header">
+                                <img src="/static/images/ai_chip.jpg" alt="Neural Chip" class="chip-mini-icon">
+                                <div>
+                                    <span class="neural-card-label">Active Model Pipeline</span>
+                                    <span class="neural-model-name">Sequential ANN (Keras)</span>
+                                </div>
+                            </div>
+                            <ul class="specs-list">
+                                <li><span>Architecture:</span> <strong>23 In → 32 ReLU → 16 ReLU → 1 Sigmoid</strong></li>
+                                <li><span>Standardization:</span> <strong>Z-Score StandardScaler</strong></li>
+                                <li><span>Trained Accuracy:</span> <strong>~81% Test (Stratified Split)</strong></li>
+                                <li><span>Dataset:</span> <strong>UCI ID #350 · 30,000 Records</strong></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </aside>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── Dedicated Creator Spotlight Section ────────────────────────── -->
+    <section class="creator-section" id="about-creator">
+        <div class="container">
+            <div class="creator-card">
+                <div class="creator-avatar-wrap">
+                    <img src="/static/images/developer_avatar.jpg" alt="Muhammed Sahal KK - Data Scientist" class="creator-avatar-img">
+                    <div class="creator-badge-pill">
+                        <span class="online-indicator"></span>
+                        AI & ML Student
+                    </div>
+                </div>
+
+                <div class="creator-info">
+                    <div class="creator-role-tag">PROJECT AUTHOR & RESEARCHER</div>
+                    <h2 class="creator-name">Muhammed Sahal KK</h2>
+                    <p class="creator-title-sub">Data Scientist · AI & Machine Learning Student</p>
+                    
+                    <p class="creator-bio">
+                        Hey there! I am <strong>Muhammed Sahal KK</strong>, a passionate Data Scientist and AI/ML practitioner. 
+                        This credit card default prediction platform is a hands-on learning project engineered to bridge 
+                        theoretical deep learning with human-friendly, consumer-grade fintech design.
+                    </p>
+
+                    <div class="creator-highlights">
+                        <div class="highlight-chip">
+                            <span class="chip-icon">🧠</span>
+                            <span>Deep Learning (ANN)</span>
+                        </div>
+                        <div class="highlight-chip">
+                            <span class="chip-icon">⚡</span>
+                            <span>FastAPI Real-Time Inference</span>
+                        </div>
+                        <div class="highlight-chip">
+                            <span class="chip-icon">📊</span>
+                            <span>UCI ML Dataset #350</span>
+                        </div>
+                        <div class="highlight-chip">
+                            <span class="chip-icon">🎨</span>
+                            <span>Dribbble-Inspired UI/UX</span>
+                        </div>
+                    </div>
+
+                    <div class="creator-social-links">
+                        <a href="https://github.com/sahal9229" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--github">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            <span>Explore GitHub (sahal9229)</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/muhammed-sahal-k-k/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--linkedin">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            <span>Connect on LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Modern Footer ─────────────────────────────────────────────── -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <span class="footer-brand">CreditLens AI</span>
+                <span class="footer-copy">© 2026 Developed by Muhammed Sahal KK · Machine Learning & AI Showcase</span>
+            </div>
+            <div class="footer-links">
+                <a href="#top-nav">Back to Top ↑</a>
+                <a href="https://github.com/sahal9229" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/muhammed-sahal-k-k/?isSelfProfile=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/app.js"></script>
+</body>
+</html>
