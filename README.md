@@ -75,6 +75,7 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser!
 ## 📁 Project Structure
 
 ```
+├── Credit Card.ipynb        # Jupyter Notebook: Data exploration, preprocessing & ANN training
 ├── credit_ann_model.keras   # Trained Keras neural network weights
 ├── scaler.pkl               # Fitted scikit-learn StandardScaler
 ├── train_model.py           # UCI dataset ingestion & ANN training script
